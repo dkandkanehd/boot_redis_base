@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+
+	<title>IWorks</title>
+	
+	<!-- 공통 스크립트 및 css 정의 start -->
+	<!-- 공통 스크립트 및 css 정의 end -->
+	
+</head>
+<body>
+
+<!-- 헤더 -->
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<div class="wrap">
+    <!-- 레이아웃 -->
+    <div class="lytLayout">
+        <div class="layoutArea">
+
+            <!-- 중단영역 -->
+            <div class="layoutContainer">
+
+                <!-- 좌측 메뉴 영역 -->
+                <div class="layoutNav">
+					<th:block th:replace="fragments/nav :: navFragment"></th:block>
+                </div>
+                <!-- //좌측 메뉴 영역 -->
+
+                <!-- 콘텐츠 영역 -->
+                <div class="layoutCont">
+                    <!-- 상단영역 -->
+                    <div class="layoutTop">
+						<th:block th:replace="fragments/top :: topFragment"></th:block>
+                    </div>
+                    <!-- //상단영역 -->
+                	<th:block layout:fragment="content"></th:block>
+                </div>
+                <!-- //콘텐츠 영역 -->
+            </div>
+            <!-- //중단영역 -->
+
+
+            <!-- 하단영역 -->
+            <div class="layoutFooter">
+				<th:block th:replace="fragments/footer :: footerFragment"></th:block>
+            </div>
+            <!-- //하단영역 -->
+        </div>
+    </div>
+</div>    
+</body>
+</html>
