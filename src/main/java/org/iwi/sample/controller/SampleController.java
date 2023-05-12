@@ -19,6 +19,8 @@ public class SampleController {
 		
 		System.out.println(sampleService.getData("test"));
 		
+		model.addAttribute("test", sampleService.getData("test"));
+		
 		return "sample/sampleList";
 	}
 	
