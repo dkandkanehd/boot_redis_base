@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+			      xmlns:th="http://www.thymeleaf.org"
+			      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+			      layout:decorate="~{layouts/layout_1}">
+<div layout:fragment="content">
+	<script type="text/javascript">
+		/* 회원정보 저장 함수 */
+		function fnSave(){
+			if(!confirm("등록하시겠습니까?")){
+				return false;
+			}
+			
+			let method = 'POST';
+			let url = "/sample/insertSample";
+			let formData = new FormData(document.getElementById("frm"));
+			
+			fetch(url,{
+						method 	: method,
+						body 	: formData
+					}).then((response) => {
+						return response.text();
+					}).then((data) => {
+						if(data == "success"){
+							alert("등록되었습니다.");
+						}else{
+							alert("등록에 실패하였습니다.");
+						}
+					}).catch((error) => {
+						alert("오류가 발생하였습니다.");
+					});
+		}
+	
+	</script>
+	<form name="frm" id="frm">
+		<table>
+			<tbody>
+				<tr>
+					<th>이름</th>
+					<td><input type="text" name="name" id="name" /></td>
+				</tr>
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" name="id" id="id" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<button type="button" onclick="fnSave();">저장</button>
+		</div>
+	</form>
+</div>
+</html>

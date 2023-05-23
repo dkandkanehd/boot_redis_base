@@ -1,16 +1,24 @@
 package org.iwi.sample.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import javax.annotation.Resource;
+
+import org.iwi.sample.domain.Sample;
+import org.iwi.sample.repository.SampleRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SampleService {
 	
-	@Autowired
-	private RedisTemplate<String, String> redisTemplate;
-
-    public String getData(String key) {
-        return redisTemplate.opsForValue().get(key);
-    }
+	@Resource
+	private SampleRepositoryImpl sampleRepository;
+	
+	//저장
+	public void insertSample(Sample sample) {
+		sampleRepository.save(sample);
+	}
+	
+	//단건조회
+	public Sample selectSampleOne() {
+		return sampleRepository.getOne();
+	}
 }
